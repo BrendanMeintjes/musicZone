@@ -1,9 +1,5 @@
 import axios from 'axios'
-import {
-  PRODUCT_LIST_REQUEST,
-  PRODUCT_LIST_SUCCESS,
-  PRODUCT_LIST_FAIL,
-} from '../constants/productConstants'
+import { PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL } from '../constants/productConstants'
 
 export const listProducts = () => async (dispatch) => {
   try {
@@ -18,10 +14,7 @@ export const listProducts = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_LIST_FAIL,
-      payload:
-        error.reponse && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: error.reponse && error.response.data.message ? error.response.data.message : error.message,
     })
   }
 }
