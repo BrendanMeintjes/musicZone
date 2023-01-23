@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 // import { composeWithDevTools } from '@reduxjs/toolkit/dist/devtoolsExtension'
-import { productListReducer } from './reducers/productsReducers.js'
+import { productListReducer, productDetailsReducer } from './reducers/productsReducers.js'
 
 const reducer = {
   productList: productListReducer,
+  productDetails: productDetailsReducer,
 }
 
 const store = configureStore({
