@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Form } from 'react-bootstrap'
+import {
+  Row,
+  Col,
+  Image,
+  ListGroup,
+  Card,
+  Button,
+  ListGroupItem,
+  Form,
+} from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -18,7 +27,7 @@ const ProductScreen = ({ history }) => {
 
   useEffect(() => {
     dispatch(listProductDetails(id))
-  }, [dispatch])
+  }, [dispatch, id])
 
   const addToCartHandler = () => {
     navigate(`/cart/${id}?qty=${qty}`)
@@ -26,25 +35,28 @@ const ProductScreen = ({ history }) => {
 
   return (
     <>
-      <Link className='btn btn-dark my-3' to='/'>
+      <Link className="btn btn-dark my-3" to="/">
         Go Back
       </Link>
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error}</Message>
+        <Message variant="danger">{error}</Message>
       ) : (
         <Row>
           <Col md={6}>
             <Image src={product.image} alt={product.name} fluid />
           </Col>
           <Col md={3}>
-            <ListGroup variant='flush'>
+            <ListGroup variant="flush">
               <ListGroupItem>
                 <h3>{product.name}</h3>
               </ListGroupItem>
               <ListGroupItem>
-                <Rating value={product.rating} text={`${product.numReviews} reviews`} />
+                <Rating
+                  value={product.rating}
+                  text={`${product.numReviews} reviews`}
+                />
               </ListGroupItem>
               <ListGroupItem>Price: ${product.price}</ListGroupItem>
               <ListGroupItem>Description: {product.description}</ListGroupItem>
@@ -52,7 +64,7 @@ const ProductScreen = ({ history }) => {
           </Col>
           <Col md={3}>
             <Card>
-              <ListGroup variant='flush'>
+              <ListGroup variant="flush">
                 <ListGroupItem>
                   <Row>
                     <Col>Price:</Col>
@@ -64,7 +76,11 @@ const ProductScreen = ({ history }) => {
                 <ListGroupItem>
                   <Row>
                     <Col>Status:</Col>
-                    <Col>{product.countInStock > 0 ? `${product.countInStock} In Stock` : 'Out Of Stock'}</Col>
+                    <Col>
+                      {product.countInStock > 0
+                        ? `${product.countInStock} In Stock`
+                        : 'Out Of Stock'}
+                    </Col>
                   </Row>
                 </ListGroupItem>
 
@@ -73,7 +89,11 @@ const ProductScreen = ({ history }) => {
                     <Row>
                       <Col>Qty.</Col>
                       <Col>
-                        <Form.Control as='select' value={qty} onChange={(e) => setQty(e.currentTarget.value)}>
+                        <Form.Control
+                          as="select"
+                          value={qty}
+                          onChange={(e) => setQty(e.currentTarget.value)}
+                        >
                           {[...Array(product.countInStock).keys()].map((x) => (
                             <option key={x + 1} value={x + 1}>
                               {x + 1}
@@ -86,7 +106,12 @@ const ProductScreen = ({ history }) => {
                 )}
 
                 <ListGroupItem>
-                  <Button onClick={addToCartHandler} className='w-100' type='button' disabled={product.countInStock === 0}>
+                  <Button
+                    onClick={addToCartHandler}
+                    className="w-100"
+                    type="button"
+                    disabled={product.countInStock === 0}
+                  >
                     Add To Cart
                   </Button>
                 </ListGroupItem>
