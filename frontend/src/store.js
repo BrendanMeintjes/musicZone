@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 // import { composeWithDevTools } from '@reduxjs/toolkit/dist/devtoolsExtension'
-import { productListReducer, productDetailsReducer } from './reducers/productsReducers'
+import {
+  productListReducer,
+  productDetailsReducer,
+} from './reducers/productsReducers'
 import { cartReducer } from './reducers/cartReducers'
 import { userLoginReducer } from './reducers/userReducers'
 
@@ -12,8 +15,12 @@ const reducer = {
   userLogin: userLoginReducer,
 }
 
-const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('userInfo')) : []
-const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
+const cartItemsFromStorage = localStorage.getItem('cartItems')
+  ? JSON.parse(localStorage.getItem('cartItems'))
+  : []
+const userInfoFromStorage = localStorage.getItem('userInfo')
+  ? JSON.parse(localStorage.getItem('userInfo'))
+  : null
 
 const preloadedState = {
   cart: {

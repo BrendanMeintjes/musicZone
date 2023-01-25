@@ -39,7 +39,11 @@ export const login = (email, password) => async (dispatch) => {
       },
     }
 
-    const { data } = await axios.post('/api/users/login', { email, password }, config)
+    const { data } = await axios.post(
+      '/api/users/login',
+      { email, password },
+      config
+    )
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
@@ -50,7 +54,22 @@ export const login = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
-      payload: error.response && error.response.data.message ? error.response.data.message : error.message,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     })
   }
+}
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem('userInfo')
+  localStorage.removeItem('cartItems')
+  // localStorage.removeItem('shippingAddress')
+  // localStorage.removeItem('paymentMethod')
+  dispatch({ type: USER_LOGOUT })
+  // dispatch({ type: USER_DETAILS_RESET })
+  // dispatch({ type: ORDER_LIST_MY_RESET })
+  // dispatch({ type: USER_LIST_RESET })
+  document.location.href = '/login'
 }
