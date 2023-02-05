@@ -13,7 +13,7 @@ import {
 } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
-const ProductListScreen = ({ history, match }) => {
+const ProductListScreen = () => {
   const { pageNumber } = useParams() || 1
 
   const dispatch = useDispatch()
@@ -54,7 +54,7 @@ const ProductListScreen = ({ history, match }) => {
     }
   }, [
     dispatch,
-    history,
+    navigate,
     userInfo,
     successDelete,
     successCreate,
