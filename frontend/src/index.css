@@ -39,3 +39,19 @@ h3 {
     font-size: 2.5vw;
   }
 }
+
+.card a {
+  color: #2D2D2D;
+  text-decoration: none;
+}
+
+.search {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.searchButton, .searchButton:hover {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border: none !important;
+}

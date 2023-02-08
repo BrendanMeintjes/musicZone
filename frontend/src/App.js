@@ -48,9 +48,15 @@ const App = () => {
               exact
             />
             <Route path="/search/:keyword" element={<HomeScreen />} />
+            <Route path="/department/:daprtment" element={<HomeScreen />} />
             <Route path="/page/:pageNumber" element={<HomeScreen />} exact />
             <Route
               path="/search/:keyword/page/:pageNumber"
+              element={<HomeScreen />}
+              exact
+            />
+            <Route
+              path="/search/:department/:keyword/page/:pageNumber"
               element={<HomeScreen />}
               exact
             />

@@ -12,7 +12,7 @@ import Meta from '../components/Meta'
 import { listProducts } from '../actions/productActions'
 
 const HomeScreen = () => {
-  const { keyword } = useParams()
+  const { keyword, department } = useParams()
   const { pageNumber } = useParams() || 1
 
   const dispatch = useDispatch()
@@ -22,7 +22,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     dispatch(listProducts(keyword, pageNumber))
-  }, [dispatch, keyword, pageNumber])
+  }, [dispatch, department, keyword, pageNumber])
 
   return (
     <>
