@@ -12,7 +12,7 @@ import Meta from '../components/Meta'
 import { listProducts } from '../actions/productActions'
 
 const HomeScreen = () => {
-  const { keyword, department } = useParams()
+  const { department, keyword } = useParams()
   const { pageNumber } = useParams() || 1
 
   const dispatch = useDispatch()
@@ -21,16 +21,16 @@ const HomeScreen = () => {
   const { loading, error, products, page, pages } = productList
 
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber))
+    dispatch(listProducts(department, keyword, pageNumber))
   }, [dispatch, department, keyword, pageNumber])
 
   return (
     <>
       <Meta />
-      {!keyword ? (
+      {!keyword && !department ? (
         <ProductCarousel />
       ) : (
-        <Link to="/" className="btn btn-light">
+        <Link to='/' className='btn btn-light'>
           Go Back
         </Link>
       )}
@@ -39,7 +39,7 @@ const HomeScreen = () => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant='danger'>{error}</Message>
       ) : (
         <>
           <Row>
@@ -49,11 +49,7 @@ const HomeScreen = () => {
               </Col>
             ))}
           </Row>
-          <Paginate
-            pages={pages}
-            page={page}
-            keyword={keyword ? keyword : ''}
-          />
+          <Paginate pages={pages} page={page} department={department ? department : ''} keyword={keyword ? keyword : ''} />
         </>
       )}
     </>
