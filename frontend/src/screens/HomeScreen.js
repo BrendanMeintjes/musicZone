@@ -27,19 +27,12 @@ const HomeScreen = () => {
   return (
     <>
       <Meta />
-      {!keyword && !department ? (
-        <ProductCarousel />
-      ) : (
-        <Link to='/' className='btn btn-light'>
-          Go Back
-        </Link>
-      )}
-      <h1>Latest Products</h1>
+      {!keyword && !department ? <ProductCarousel /> : null}
 
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error}</Message>
+        <Message variant="danger">{error}</Message>
       ) : (
         <>
           <Row>
@@ -49,7 +42,12 @@ const HomeScreen = () => {
               </Col>
             ))}
           </Row>
-          <Paginate pages={pages} page={page} department={department ? department : ''} keyword={keyword ? keyword : ''} />
+          <Paginate
+            pages={pages}
+            page={page}
+            department={department ? department : ''}
+            keyword={keyword ? keyword : ''}
+          />
         </>
       )}
     </>

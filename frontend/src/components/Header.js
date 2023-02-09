@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <header>
       <Navbar bg="light" variant="light">
-        <Container>
+        <Container className="d-flex">
           <LinkContainer to="/">
             <Navbar.Brand>MusicZone</Navbar.Brand>
           </LinkContainer>
@@ -64,13 +64,13 @@ const Header = () => {
       </Navbar>
 
       <Navbar bg="primary" variant="dark">
-        <Container>
-          <Row className="w-100">
-            <Col sm={5} md={4} lg={3}>
+        <Container className="d-flex">
+          <Row className=" vw-100">
+            <Col sm={5} md={4} lg={3} className="py-2">
               <ShopDepartment />
             </Col>
-            <Col sm={7} md={8} lg={9}>
-              <SearchBox />
+            <Col sm={7} md={8} lg={9} className="py-2">
+              <SearchBox className="d-flex w-100" />
             </Col>
           </Row>
         </Container>

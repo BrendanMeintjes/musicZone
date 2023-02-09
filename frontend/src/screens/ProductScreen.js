@@ -61,9 +61,6 @@ const ProductScreen = () => {
 
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
-        Go Back
-      </Link>
       {loading ? (
         <Loader />
       ) : error ? (

@@ -3,27 +3,52 @@ import { useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 
 const SearchBox = () => {
-  const [keyword, setKeyword] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
   const navigate = useNavigate()
 
   const submitHandler = (e) => {
     e.preventDefault()
-    if (keyword.trim()) {
+    const keyword = searchTerm.keyword
+    const department = searchTerm.department
+
+    if (searchTerm.department && searchTerm.keyword) {
+      navigate(`/department/${department}/search/${keyword}`)
+    } else if (searchTerm.department) {
+      navigate(`/department/${department}`)
+    } else if (searchTerm.keyword) {
       navigate(`/search/${keyword}`)
     } else {
-      navigate('/')
+      navigate(`/`)
     }
   }
 
+  const handleChange = (event) => {
+    const name = event.target.name
+    const value = event.target.value
+    setSearchTerm((values) => ({ ...values, [name]: value }))
+  }
+
   return (
-    <Form onSubmit={submitHandler} className="d-flex w-100">
+    <Form onSubmit={submitHandler} className="d-flex">
       <Form.Control
         type="text"
-        name="q"
-        onChange={(e) => setKeyword(e.target.value)}
+        name="keyword"
+        onChange={handleChange}
         placeholder="Search Products..."
-        className="mr-sm-2 ml-sm-5 search"
+        className="search"
+        preventDefault
       ></Form.Control>
+      <Form.Select
+        aria-label="Default select example"
+        name="department"
+        onChange={handleChange}
+        className="searchByDepartment"
+      >
+        <option value="">All Departments</option>
+        <option value="Drums">Drums</option>
+        <option value="Guitars">Guitars</option>
+        <option value="3">Three</option>
+      </Form.Select>
       <Button type="submit" variant="secondary" className="searchButton">
         <i className="fa-solid fa-magnifying-glass"></i>{' '}
       </Button>

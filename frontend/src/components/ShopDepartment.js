@@ -14,12 +14,18 @@ function ShopDepartment() {
   }
 
   return (
-    <DropdownButton id='dropdown-basic-button' title='Shop Department' variant='secondary' className='d-flex flex-column' onSelect={selectHandler}>
-      <Dropdown.Item eventKey='Drums'>Drums</Dropdown.Item>
-      <Dropdown.Item eventKey='Guitars'>Guitars</Dropdown.Item>
-      <Dropdown.Item eventKey='BassGuitars'>Bass Guitars</Dropdown.Item>
-      <Dropdown.Item eventKey='Keys'>Pianos & Keyboards</Dropdown.Item>
-      <Dropdown.Item eventKey='Wind'>Wind Instruments</Dropdown.Item>
+    <DropdownButton
+      id="dropdown-basic-button"
+      title="Shop Department"
+      variant="secondary"
+      className="d-flex flex-column"
+      onSelect={selectHandler}
+    >
+      <Dropdown.Item eventKey="Drums">Drums</Dropdown.Item>
+      <Dropdown.Item eventKey="Guitars">Guitars</Dropdown.Item>
+      <Dropdown.Item eventKey="BassGuitars">Bass Guitars</Dropdown.Item>
+      <Dropdown.Item eventKey="Keys">Pianos & Keyboards</Dropdown.Item>
+      <Dropdown.Item eventKey="Wind">Wind Instruments</Dropdown.Item>
     </DropdownButton>
   )
 }

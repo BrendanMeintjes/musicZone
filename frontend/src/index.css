@@ -1,3 +1,4 @@
+
 main {
   min-height: 80vh;
 }
@@ -41,7 +42,7 @@ h3 {
 }
 
 .card a {
-  color: #2D2D2D;
+  color: #212529;
   text-decoration: none;
 }
 
@@ -53,5 +54,69 @@ h3 {
 .searchButton, .searchButton:hover {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
-  border: none !important;
+}
+
+@media screen and (max-width: 992px) {
+  .searchByDepartment {
+    display: none;
+  }
+}
+
+.searchByDepartment {
+  background: #ECF0F1;
+  border: none;
+  border-left: 1px solid #95A5A6;
+  border-right: 10px solid #ECF0F1;
+  border-radius: 0;
+  max-width: 200px;
+}
+option {
+  background: #ffffff;
+  color: #212529;
+  border: none;
+  border-left: 1px solid #95A5A6;
+  border-right: 10px solid #ECF0F1;
+  border-radius: 0;
+  max-width: 200px;
+  margin-top: 10px;
+}
+
+.searchByDepartment:focus {
+  background: #ECF0F1;
+  border: none;
+  border-left: 1px solid #95A5A6;
+  border-right: 10px solid #ECF0F1;
+  border-radius: 0;
+  max-width: 200px;
+}
+
+select {
+  -webkit-appearance: listbox !important;
+  }
+
+.productTitle {
+  height: 50px;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.product {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.alert-info {
+  background: none;
+  color:#212529 ;
+}
+
+.alert-info a {
+  background: none;
+  color:#13967D ;
+}
+
+a {
+  color:#13967D;
 }
