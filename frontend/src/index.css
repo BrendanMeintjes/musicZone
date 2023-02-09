@@ -114,9 +114,23 @@ select {
 
 .alert-info a {
   background: none;
-  color:#13967D ;
+  color:#3498DB ;
 }
 
-a {
-  color:#13967D;
+a, .steps {
+  color:#3498DB;
+}
+
+a:hover, .steps:hover {
+  color:#3498DB;
+  opacity: 80%
+}
+
+.logo {
+  object-fit: cover;
+  display: block;
+  max-width:230px;
+  max-height:40px;
+  width: auto;
+  height: auto;
 }

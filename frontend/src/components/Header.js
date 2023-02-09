@@ -18,43 +18,43 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="light" variant="light">
-        <Container className="d-flex">
-          <LinkContainer to="/">
-            <Navbar.Brand>MusicZone</Navbar.Brand>
+      <Navbar bg='light' variant='light'>
+        <Container className='d-flex'>
+          <LinkContainer to='/'>
+            <Navbar.Brand>
+              <img src='/images/MZ_Logo.png' alt='musicZone' className='logo' />
+            </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Nav className="ms-auto">
-            <LinkContainer to="/cart">
+          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Nav className='ms-auto'>
+            <LinkContainer to='/cart'>
               <Nav.Link>
-                <i className="fas fa-shopping-cart"></i> Cart
+                <i className='fas fa-shopping-cart'></i> Cart
               </Nav.Link>
             </LinkContainer>
             {userInfo ? (
-              <NavDropdown title="My Profile" id="username">
-                <LinkContainer to="/profile">
+              <NavDropdown title='My Profile' id='username'>
+                <LinkContainer to='/profile'>
                   <NavDropdown.Item>Profile</NavDropdown.Item>
                 </LinkContainer>
-                <NavDropdown.Item onClick={logoutHandler}>
-                  Logout
-                </NavDropdown.Item>
+                <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
               </NavDropdown>
             ) : (
-              <LinkContainer to="/login">
+              <LinkContainer to='/login'>
                 <Nav.Link>
-                  <i className="fas fa-user"></i> Sign In
+                  <i className='fas fa-user'></i> Sign In
                 </Nav.Link>
               </LinkContainer>
             )}
             {userInfo && userInfo.isAdmin && (
-              <NavDropdown title="Admin" id="adminmenu">
-                <LinkContainer to="/admin/userlist">
+              <NavDropdown title='Admin' id='adminmenu'>
+                <LinkContainer to='/admin/userlist'>
                   <NavDropdown.Item>Users</NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer to="/admin/productlist">
+                <LinkContainer to='/admin/productlist'>
                   <NavDropdown.Item>Products</NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer to="/admin/orderlist">
+                <LinkContainer to='/admin/orderlist'>
                   <NavDropdown.Item>Orders</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
@@ -63,14 +63,14 @@ const Header = () => {
         </Container>
       </Navbar>
 
-      <Navbar bg="primary" variant="dark">
-        <Container className="d-flex">
-          <Row className=" vw-100">
-            <Col sm={5} md={4} lg={3} className="py-2">
+      <Navbar bg='primary' variant='dark'>
+        <Container className='d-flex'>
+          <Row className=' vw-100'>
+            <Col sm={5} md={4} lg={3} className='py-2'>
               <ShopDepartment />
             </Col>
-            <Col sm={7} md={8} lg={9} className="py-2">
-              <SearchBox className="d-flex w-100" />
+            <Col sm={7} md={8} lg={9} className='py-2'>
+              <SearchBox className='d-flex w-100' />
             </Col>
           </Row>
         </Container>
