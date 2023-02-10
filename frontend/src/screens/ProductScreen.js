@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col, Image, ListGroup, Card, Button, Form, Container } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Card, Button, Form, Container, ListGroupItem } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -64,6 +64,11 @@ const ProductScreen = () => {
           <Row>
             <Col md={6}>
               <Card className='productImageCard'>
+                {product.discount > 0 ? (
+                  <div class='ribbon'>
+                    <span className='discount'>{product.discount * 100}% Off</span>
+                  </div>
+                ) : null}
                 <Image className='productImage' src={product.image} alt={product.name} fluid />
               </Card>
             </Col>
@@ -75,7 +80,19 @@ const ProductScreen = () => {
                 <ListGroup.Item>
                   <Rating value={product.rating} text={`${product.numReviews} reviews`} />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                {product.discount > 0 ? (
+                  <>
+                    <ListGroup.Item className='d-flex'>
+                      <span>Price: ${Math.round(product.price * (1 - product.discount)) - 0.01}</span>
+                      <span className='ms-auto text-muted'>
+                        <s>${product.price}</s>
+                      </span>
+                    </ListGroup.Item>{' '}
+                    <ListGroupItem> </ListGroupItem>
+                  </>
+                ) : (
+                  <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                )}
                 <ListGroup.Item>Description: {product.description}</ListGroup.Item>
               </ListGroup>
             </Col>
@@ -85,9 +102,7 @@ const ProductScreen = () => {
                   <ListGroup.Item>
                     <Row>
                       <Col>Price:</Col>
-                      <Col>
-                        <strong>${product.price}</strong>
-                      </Col>
+                      <Col>{product.discount > 0 ? <strong>${Math.round(product.price * (1 - product.discount)) - 0.01}</strong> : <strong>${product.price}</strong>}</Col>
                     </Row>
                   </ListGroup.Item>
 

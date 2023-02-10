@@ -23,15 +23,19 @@ const Product = ({ product }) => {
               <div class='ribbon'>
                 <span className='discount'>{product.discount * 100}% Off</span>
               </div>
-              <Card.Text as='h5' className='d-inline'>
-                ${Math.floor(product.price * (1 - product.discount)) - 0.01}
-              </Card.Text>
-              <Card.Text as='h5' className='d-inline ms-5 text-muted'>
-                <s>${product.price}</s>
-              </Card.Text>
+              <div className='d-flex mb-0'>
+                <Card.Text as='h5' className='d-inline'>
+                  ${Math.round(product.price * (1 - product.discount)) - 0.01}
+                </Card.Text>
+                <Card.Text as='h5' className='d-inline ms-auto text-muted'>
+                  <s>${product.price}</s>
+                </Card.Text>
+              </div>
             </>
           ) : (
-            <Card.Text as='h5'>${product.price}</Card.Text>
+            <Card.Text as='h5' className='mb-2'>
+              ${product.price}
+            </Card.Text>
           )}
         </Card.Body>
       </Card>
