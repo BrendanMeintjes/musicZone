@@ -41,7 +41,8 @@ h3 {
   }
 }
 
-.card a {
+ a.cardLink,
+ a.cardLink:hover{
   color: #212529;
   text-decoration: none;
 }
@@ -147,8 +148,8 @@ a:hover, .steps:hover {
   top: -5px;
   z-index: 1;
   overflow: hidden;
-  width: 93px;
-  height: 93px;
+  width: 150px;
+  height: 150px;
   text-align: right;
 }
 
@@ -156,15 +157,15 @@ a:hover, .steps:hover {
   font-size: 0.8rem;
   color: #fff;
   text-align: center;
-  line-height: 32px;
+  line-height: 45px;
   transform: rotate(45deg);
-  width: 125px;
+  width: 190px;
   display: block;
   background: rgba(24, 188, 156, 1);
   box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
   position: absolute;
-  top: 17px;
-  right: -29px;
+  top: 29px;
+  right: -43px;
 }
 
 .ribbon span::before {
@@ -189,4 +190,18 @@ a:hover, .steps:hover {
   border-left: 3px solid transparent;
   border-bottom: 3px solid transparent;
   border-top: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+.discount {
+  font-size: 1.25em !important;
+}
+
+.productImageCard {
+  border-radius: 0px;
+  border: none;
+}
+
+.productImage {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
