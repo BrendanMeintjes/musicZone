@@ -26,8 +26,11 @@ const Product = ({ product }) => {
 
         {product.discount > 0 ? (
           <>
+            <div class="ribbon">
+              <span>{product.discount * 100}% Off</span>
+            </div>
             <Card.Text as="h5" className="d-inline">
-              ${(product.price * (1 - product.discount)).toFixed(2)}
+              ${Math.floor(product.price * (1 - product.discount)) - 0.01}
             </Card.Text>
             <Card.Text as="h5" className="d-inline ms-5 text-muted">
               <s>${product.price}</s>
