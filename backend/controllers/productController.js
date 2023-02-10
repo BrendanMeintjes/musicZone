@@ -68,6 +68,7 @@ const createProduct = asyncHandler(async (req, res) => {
     name: 'Sample name',
     department: 'Sample department',
     price: 0,
+    discount: 0,
     user: req.user._id,
     image: '/images/sample.jpg',
     brand: 'Sample brand',
@@ -85,7 +86,17 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route   PUT /api/products/:id
 // @access  Private/Admin
 const updateProduct = asyncHandler(async (req, res) => {
-  const { name, price, description, image, brand, category, countInStock } = req.body
+  const {
+    name,
+    department,
+    price,
+    discount,
+    description,
+    image,
+    brand,
+    category,
+    countInStock,
+  } = req.body
 
   const product = await Product.findById(req.params.id)
 
@@ -93,6 +104,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.name = name
     product.department = department
     product.price = price
+    product.discount = discount
     product.description = description
     product.image = image
     product.brand = brand
@@ -116,7 +128,9 @@ const createProductReview = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
 
   if (product) {
-    const alreadyReviewed = product.reviews.find((r) => r.user.toString() === req.user._id.toString())
+    const alreadyReviewed = product.reviews.find(
+      (r) => r.user.toString() === req.user._id.toString()
+    )
 
     if (alreadyReviewed) {
       res.status(400)
@@ -134,7 +148,9 @@ const createProductReview = asyncHandler(async (req, res) => {
 
     product.numReviews = product.reviews.length
 
-    product.rating = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length
+    product.rating =
+      product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      product.reviews.length
 
     await product.save()
     res.status(201).json({ message: 'Review added' })
@@ -153,4 +169,12 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.json(products)
 })
 
-export { getProducts, getProductById, deleteProduct, createProduct, updateProduct, createProductReview, getTopProducts }
+export {
+  getProducts,
+  getProductById,
+  deleteProduct,
+  createProduct,
+  updateProduct,
+  createProductReview,
+  getTopProducts,
+}

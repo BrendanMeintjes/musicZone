@@ -24,7 +24,18 @@ const Product = ({ product }) => {
           />
         </Card.Text>
 
-        <Card.Text as="h3">${product.price}</Card.Text>
+        {product.discount > 0 ? (
+          <>
+            <Card.Text as="h5" className="d-inline">
+              ${(product.price * (1 - product.discount)).toFixed(2)}
+            </Card.Text>
+            <Card.Text as="h5" className="d-inline ms-5 text-muted">
+              <s>${product.price}</s>
+            </Card.Text>
+          </>
+        ) : (
+          <Card.Text as="h5">${product.price}</Card.Text>
+        )}
       </Card.Body>
     </Card>
   )
