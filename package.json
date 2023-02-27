@@ -4,7 +4,7 @@
   "description": "MERN eCom app",
   "main": "index.js",
   "scripts": {
-    "build": "npm install && cd frontend && npm install run build",
+    "build": "npm install && cd frontend && npm install && npm run build",
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend",
