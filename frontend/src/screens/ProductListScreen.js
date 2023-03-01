@@ -37,7 +37,7 @@ const ProductListScreen = () => {
     if (successCreate) {
       navigate(`/admin/product/${createdProduct._id}/edit`)
     } else {
-      dispatch(listProducts('', pageNumber))
+      dispatch(listProducts('', '', pageNumber))
     }
   }, [dispatch, navigate, userInfo, successDelete, successCreate, createdProduct, pageNumber])
 
