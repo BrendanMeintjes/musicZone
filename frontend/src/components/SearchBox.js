@@ -29,28 +29,19 @@ const SearchBox = () => {
   }
 
   return (
-    <Form onSubmit={submitHandler} className="d-flex">
-      <Form.Control
-        type="text"
-        name="keyword"
-        onChange={handleChange}
-        placeholder="Search Products..."
-        className="search"
-        preventDefault
-      ></Form.Control>
-      <Form.Select
-        aria-label="Default select example"
-        name="department"
-        onChange={handleChange}
-        className="searchByDepartment"
-      >
-        <option value="">All Departments</option>
-        <option value="Drums">Drums</option>
-        <option value="Guitars">Guitars</option>
-        <option value="3">Three</option>
+    <Form onSubmit={submitHandler} className='d-flex'>
+      <Form.Control type='text' name='keyword' onChange={handleChange} placeholder='Search Products...' className='search' preventDefault></Form.Control>
+      <Form.Select aria-label='Default select example' name='department' onChange={handleChange} className='searchByDepartment'>
+        <option value=''>All Departments</option>
+        <option value='Drums'>Drums</option>
+        <option value='Guitars'>Guitars</option>
+        <option value='BassGuitars'>Bass Guitars</option>
+        <option value='Keys'>Pianos & Keyboards</option>
+        <option value='Wind'>Wind Instruments</option>
+        <option value='Orchestral'>Strings & Orchestral</option>
       </Form.Select>
-      <Button type="submit" variant="secondary" className="searchButton">
-        <i className="fa-solid fa-magnifying-glass"></i>{' '}
+      <Button type='submit' variant='secondary' className='searchButton'>
+        <i className='fa-solid fa-magnifying-glass'></i>{' '}
       </Button>
     </Form>
   )
